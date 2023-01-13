@@ -17,10 +17,10 @@ RUN ln -s -f /usr/bin/python${PYTHON_VERSION} /usr/bin/python3 && \
     ln -s -f /usr/bin/python${PYTHON_VERSION} /usr/bin/python && \
     ln -s -f /usr/bin/pip3 /usr/bin/pip
 
-RUN python3 -m venv $POETRY_VENV \
-    && $POETRY_VENV/bin/pip install -U pip setuptools \
-    && $POETRY_VENV/bin/pip install poetry==${POETRY_VERSION} \
-    && $POETRY_VENV/bin/pip install torch==1.13.0+cu117 -f https://download.pytorch.org/whl/torch
+RUN python3 -m venv $POETRY_VENV 
+RUN $POETRY_VENV/bin/pip install -U pip setuptools 
+RUN $POETRY_VENV/bin/pip install poetry==${POETRY_VERSION} 
+RUN $POETRY_VENV/bin/pip install torch==1.13.0+cu117 -f https://download.pytorch.org/whl/torch
 
 ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
